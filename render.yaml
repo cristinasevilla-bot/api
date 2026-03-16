@@ -2,8 +2,9 @@ services:
   - type: web
     name: realestate-agent
     runtime: python
+    pythonVersion: "3.11.9"
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --app-dir src
     envVars:
       - key: ANTHROPIC_API_KEY
         sync: false
@@ -15,3 +16,4 @@ services:
         sync: false
       - key: SMTP_PASS
         sync: false
+ 
